@@ -1,0 +1,22 @@
+server:
+  port: 8088
+  servlet:
+    context-path: /army
+spring:
+  fabric:
+    chaincode:
+      identify: commoncc
+      name: Common
+      version: 1.0
+    channel: army-channel
+    peers: 6
+    organizations:
+      - org2
+      - org4
+    name: military_net
+    gateway:
+      wallet:
+        identify: admin
+    network:
+      file: connection-org4.yml
+      name: military_net

@@ -1,0 +1,369 @@
+name: military_net
+version: 1.0.0
+x-type: hlfv1
+client:
+  logging: {level: debug}
+  connection:
+    timeout:
+      peer: {endorser: 30000, eventHub: 30000, eventReg: 30000}
+      orderer: 30000
+  organization: Org4
+  credentialStore:
+    path: tmp/hfc-kvs
+    cryptoStore: {path: tmp/hfc-cvs}
+    wallet: admin
+channels:
+  army-channel:
+    orderers: [orderer.military.com, orderer2.military.com, orderer3.military.com,
+      orderer4.military.com, orderer5.military.com]
+    peers:
+      peer0.org2.military.com: {endorsingPeer: true, chaincodeQuery: true, ledgerQuery: true,
+        eventSource: true}
+      peer1.org2.military.com: {endorsingPeer: false, chaincodeQuery: true, ledgerQuery: true,
+        eventSource: false}
+      peer2.org2.military.com: {endorsingPeer: false, chaincodeQuery: true, ledgerQuery: true,
+        eventSource: false}
+      peer0.org4.military.com: {endorsingPeer: true, chaincodeQuery: true, ledgerQuery: true,
+        eventSource: true}
+      peer1.org4.military.com: {endorsingPeer: false, chaincodeQuery: true, ledgerQuery: true,
+        eventSource: false}
+      peer2.org4.military.com: {endorsingPeer: false, chaincodeQuery: true, ledgerQuery: true,
+        eventSource: false}
+    policies: {}
+organizations:
+  Org2:
+    mspid: Org2MSP
+    certificateAuthorities: [ca.org2.military.com]
+    adminPrivateKey:
+      pem: |
+        -----BEGIN PRIVATE KEY-----
+        MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQg3fetQVI1lZspf5iS
+        9tmT5RsHtBKJ85BDqyb57N6HpByhRANCAARX7dTK8B/n4fPgq9Wek4fDSsGv7a04
+        yyWh9eHgVc/o9NHfrJy/pWlcwR4eFp1Xg3ZELMXXbkV76GDdAwnglEoi
+        -----END PRIVATE KEY-----
+    signedCert:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICLDCCAdOgAwIBAgIRAII4MM6AFK0RpW+UWoFY6n4wCgYIKoZIzj0EAwIwdTEL
+        MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+        cmFuY2lzY28xGjAYBgNVBAoTEW9yZzEubWlsaXRhcnkuY29tMR0wGwYDVQQDExRj
+        YS5vcmcxLm1pbGl0YXJ5LmNvbTAeFw0yMTA2MTcwNDEzMDBaFw0zMTA2MTUwNDEz
+        MDBaMGwxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQH
+        Ew1TYW4gRnJhbmNpc2NvMQ4wDAYDVQQLEwVhZG1pbjEgMB4GA1UEAwwXQWRtaW5A
+        b3JnMS5taWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAARX7dTK
+        8B/n4fPgq9Wek4fDSsGv7a04yyWh9eHgVc/o9NHfrJy/pWlcwR4eFp1Xg3ZELMXX
+        bkV76GDdAwnglEoio00wSzAOBgNVHQ8BAf8EBAMCB4AwDAYDVR0TAQH/BAIwADAr
+        BgNVHSMEJDAigCARGtvo/UuAFLJAhbnJBBDyEPH/XVt6BlDuVD/iHCg27zAKBggq
+        hkjOPQQDAgNHADBEAiAPj5DVU0onwP0TiVrL6/hMXTKp7amRJZwoOo+bE0ghFgIg
+        O+Or5OABb1weq0++fOUFWSr7g2RytFp9uqXBNQfrheo=
+        -----END CERTIFICATE-----
+    peers: [peer0.org2.military.com, peer1.org2.military.com, peer2.org2.military.com]
+  Org4:
+    mspid: Org4MSP
+    certificateAuthorities: [ca.org4.military.com]
+    adminPrivateKey:
+      pem: |
+        -----BEGIN PRIVATE KEY-----
+        MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQglb77Qm89ZoXm2ww9
+        8TaQRTPNHxGa+dL1GfQP/2fQANyhRANCAARL7QYkwcznurnMqlYw6U4hL7osWDtf
+        81lHWUHPfMPkQRl9xOgb1O5BfYnKITOdfGiGiQFV7sWpq7S4pB6Q9Kzr
+        -----END PRIVATE KEY-----
+    signedCert:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICLDCCAdKgAwIBAgIQFZZ/jQydhtlAB0mVSUnfTTAKBggqhkjOPQQDAjB1MQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEaMBgGA1UEChMRb3JnNC5taWxpdGFyeS5jb20xHTAbBgNVBAMTFGNh
+        Lm9yZzQubWlsaXRhcnkuY29tMB4XDTIxMDYxNzA0MTMwMFoXDTMxMDYxNTA0MTMw
+        MFowbDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcT
+        DVNhbiBGcmFuY2lzY28xDjAMBgNVBAsTBWFkbWluMSAwHgYDVQQDDBdBZG1pbkBv
+        cmc0Lm1pbGl0YXJ5LmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABEvtBiTB
+        zOe6ucyqVjDpTiEvuixYO1/zWUdZQc98w+RBGX3E6BvU7kF9icohM518aIaJAVXu
+        xamrtLikHpD0rOujTTBLMA4GA1UdDwEB/wQEAwIHgDAMBgNVHRMBAf8EAjAAMCsG
+        A1UdIwQkMCKAIF5QF2Y5rzy8xp/qY2V0nyBQ/CODO8rCeoMK6Wm39EOuMAoGCCqG
+        SM49BAMCA0gAMEUCIQDqBxyQlu21r4YL1SDKpzypmASbmc9yD0OdMCX2nx7QZwIg
+        E8zGH0/dg8eeToKQ7MReepEnE66RyHDe/eVF610uXVc=
+        -----END CERTIFICATE-----
+    peers: [peer0.org4.military.com, peer1.org4.military.com, peer2.org4.military.com]
+orderers:
+  orderer.military.com:
+    url: grpcs://192.168.3.238:1011
+    grpcOptions: {grpc-max-send-message-length: 15, grpc.keepalive_time_ms: 360000,
+      grpc.keepalive_timeout_ms: 180000, hostnameOverride: orderer.military.com}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICRjCCAe2gAwIBAgIQb1gbJLUXZE7eSHQjS3wY7zAKBggqhkjOPQQDAjBuMQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEVMBMGA1UEChMMbWlsaXRhcnkuY29tMRswGQYDVQQDExJ0bHNjYS5t
+        aWxpdGFyeS5jb20wHhcNMjEwNjE3MDQxMzAwWhcNMzEwNjE1MDQxMzAwWjBuMQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEVMBMGA1UEChMMbWlsaXRhcnkuY29tMRswGQYDVQQDExJ0bHNjYS5t
+        aWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASyOzYn8T4jSA6Y
+        B/nGG8U3P7WqiPkHQbqib6mwG1EvYTUtmJGGR6tGeUGtkskbmG9LJJ6CAd/JcVfc
+        7sFNK6ZTo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwIG
+        CCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIFRpjre9Mm49u8F5
+        lf/lR0aZmYmO3rNf26lqZDukODNtMAoGCCqGSM49BAMCA0cAMEQCIG625vcWbl7i
+        +/Zb+e87B7lacZXc6GMFYBpFwFLEUIi7AiAMgoqs8TzM83eglEOQ/TDUgSE2825l
+        05w2tZMe5Lv/SA==
+        -----END CERTIFICATE-----
+  orderer2.military.com:
+    url: grpcs://192.168.3.238:1012
+    grpcOptions: {grpc-max-send-message-length: 15, grpc.keepalive_time_ms: 360000,
+      grpc.keepalive_timeout_ms: 180000, hostnameOverride: orderer2.military.com}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICRjCCAe2gAwIBAgIQb1gbJLUXZE7eSHQjS3wY7zAKBggqhkjOPQQDAjBuMQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEVMBMGA1UEChMMbWlsaXRhcnkuY29tMRswGQYDVQQDExJ0bHNjYS5t
+        aWxpdGFyeS5jb20wHhcNMjEwNjE3MDQxMzAwWhcNMzEwNjE1MDQxMzAwWjBuMQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEVMBMGA1UEChMMbWlsaXRhcnkuY29tMRswGQYDVQQDExJ0bHNjYS5t
+        aWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASyOzYn8T4jSA6Y
+        B/nGG8U3P7WqiPkHQbqib6mwG1EvYTUtmJGGR6tGeUGtkskbmG9LJJ6CAd/JcVfc
+        7sFNK6ZTo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwIG
+        CCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIFRpjre9Mm49u8F5
+        lf/lR0aZmYmO3rNf26lqZDukODNtMAoGCCqGSM49BAMCA0cAMEQCIG625vcWbl7i
+        +/Zb+e87B7lacZXc6GMFYBpFwFLEUIi7AiAMgoqs8TzM83eglEOQ/TDUgSE2825l
+        05w2tZMe5Lv/SA==
+        -----END CERTIFICATE-----
+  orderer3.military.com:
+    url: grpcs://192.168.3.238:1013
+    grpcOptions: {grpc-max-send-message-length: 15, grpc.keepalive_time_ms: 360000,
+      grpc.keepalive_timeout_ms: 180000, hostnameOverride: orderer3.military.com}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICRjCCAe2gAwIBAgIQb1gbJLUXZE7eSHQjS3wY7zAKBggqhkjOPQQDAjBuMQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEVMBMGA1UEChMMbWlsaXRhcnkuY29tMRswGQYDVQQDExJ0bHNjYS5t
+        aWxpdGFyeS5jb20wHhcNMjEwNjE3MDQxMzAwWhcNMzEwNjE1MDQxMzAwWjBuMQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEVMBMGA1UEChMMbWlsaXRhcnkuY29tMRswGQYDVQQDExJ0bHNjYS5t
+        aWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASyOzYn8T4jSA6Y
+        B/nGG8U3P7WqiPkHQbqib6mwG1EvYTUtmJGGR6tGeUGtkskbmG9LJJ6CAd/JcVfc
+        7sFNK6ZTo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwIG
+        CCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIFRpjre9Mm49u8F5
+        lf/lR0aZmYmO3rNf26lqZDukODNtMAoGCCqGSM49BAMCA0cAMEQCIG625vcWbl7i
+        +/Zb+e87B7lacZXc6GMFYBpFwFLEUIi7AiAMgoqs8TzM83eglEOQ/TDUgSE2825l
+        05w2tZMe5Lv/SA==
+        -----END CERTIFICATE-----
+  orderer4.military.com:
+    url: grpcs://192.168.3.238:1014
+    grpcOptions: {grpc-max-send-message-length: 15, grpc.keepalive_time_ms: 360000,
+      grpc.keepalive_timeout_ms: 180000, hostnameOverride: orderer4.military.com}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICRjCCAe2gAwIBAgIQb1gbJLUXZE7eSHQjS3wY7zAKBggqhkjOPQQDAjBuMQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEVMBMGA1UEChMMbWlsaXRhcnkuY29tMRswGQYDVQQDExJ0bHNjYS5t
+        aWxpdGFyeS5jb20wHhcNMjEwNjE3MDQxMzAwWhcNMzEwNjE1MDQxMzAwWjBuMQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEVMBMGA1UEChMMbWlsaXRhcnkuY29tMRswGQYDVQQDExJ0bHNjYS5t
+        aWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASyOzYn8T4jSA6Y
+        B/nGG8U3P7WqiPkHQbqib6mwG1EvYTUtmJGGR6tGeUGtkskbmG9LJJ6CAd/JcVfc
+        7sFNK6ZTo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwIG
+        CCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIFRpjre9Mm49u8F5
+        lf/lR0aZmYmO3rNf26lqZDukODNtMAoGCCqGSM49BAMCA0cAMEQCIG625vcWbl7i
+        +/Zb+e87B7lacZXc6GMFYBpFwFLEUIi7AiAMgoqs8TzM83eglEOQ/TDUgSE2825l
+        05w2tZMe5Lv/SA==
+        -----END CERTIFICATE-----
+  orderer5.military.com:
+    url: grpcs://192.168.3.238:1015
+    grpcOptions: {grpc-max-send-message-length: 15, grpc.keepalive_time_ms: 360000,
+      grpc.keepalive_timeout_ms: 180000, hostnameOverride: orderer5.military.com}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICRjCCAe2gAwIBAgIQb1gbJLUXZE7eSHQjS3wY7zAKBggqhkjOPQQDAjBuMQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEVMBMGA1UEChMMbWlsaXRhcnkuY29tMRswGQYDVQQDExJ0bHNjYS5t
+        aWxpdGFyeS5jb20wHhcNMjEwNjE3MDQxMzAwWhcNMzEwNjE1MDQxMzAwWjBuMQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEVMBMGA1UEChMMbWlsaXRhcnkuY29tMRswGQYDVQQDExJ0bHNjYS5t
+        aWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASyOzYn8T4jSA6Y
+        B/nGG8U3P7WqiPkHQbqib6mwG1EvYTUtmJGGR6tGeUGtkskbmG9LJJ6CAd/JcVfc
+        7sFNK6ZTo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwIG
+        CCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIFRpjre9Mm49u8F5
+        lf/lR0aZmYmO3rNf26lqZDukODNtMAoGCCqGSM49BAMCA0cAMEQCIG625vcWbl7i
+        +/Zb+e87B7lacZXc6GMFYBpFwFLEUIi7AiAMgoqs8TzM83eglEOQ/TDUgSE2825l
+        05w2tZMe5Lv/SA==
+        -----END CERTIFICATE-----
+peers:
+  peer0.org2.military.com:
+    url: grpcs://192.168.3.238:3051
+    grpcOptions: {ssl-target-name-override: peer0.org2.military.com, grpc.http2.keepalive_time: 15,
+      request-timeout: 120001, hostnameOverride: peer0.org2.military.com}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICXDCCAgKgAwIBAgIRAPBcLGXzxPtmszQ4t07cnswwCgYIKoZIzj0EAwIweDEL
+        MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+        cmFuY2lzY28xGjAYBgNVBAoTEW9yZzEubWlsaXRhcnkuY29tMSAwHgYDVQQDExd0
+        bHNjYS5vcmcxLm1pbGl0YXJ5LmNvbTAeFw0yMTA2MTcwNDEzMDBaFw0zMTA2MTUw
+        NDEzMDBaMHgxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYD
+        VQQHEw1TYW4gRnJhbmNpc2NvMRowGAYDVQQKExFvcmcxLm1pbGl0YXJ5LmNvbTEg
+        MB4GA1UEAxMXdGxzY2Eub3JnMS5taWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggq
+        hkjOPQMBBwNCAAR/ARF0HEfXBBtMDX1oR7cEQkZDVxBoqh3Y45FFPGKp9B503Mc9
+        8thhFtlydezaJTRSOzYoH7BG9IgLkaBC4sk8o20wazAOBgNVHQ8BAf8EBAMCAaYw
+        HQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8w
+        KQYDVR0OBCIEIDDCjrFcEwQ5J3lZ2hBJIVpnjHfJNOcI7QUcKnz0nAv7MAoGCCqG
+        SM49BAMCA0gAMEUCIGt8nGOPGCAaakFuR2h3tja4hx+Rxz6kvGm6iZcpN5aFAiEA
+        jiwL4qat+dzIGmfQsJqNBW+XbzpX7FcF+PQKbXG5OBM=
+        -----END CERTIFICATE-----
+  peer1.org2.military.com:
+    url: grpcs://192.168.3.238:3151
+    grpcOptions: {ssl-target-name-override: peer1.org2.military.com, grpc.http2.keepalive_time: 15,
+      request-timeout: 120001, hostnameOverride: peer1.org2.military.com}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICXDCCAgKgAwIBAgIRAPBcLGXzxPtmszQ4t07cnswwCgYIKoZIzj0EAwIweDEL
+        MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+        cmFuY2lzY28xGjAYBgNVBAoTEW9yZzEubWlsaXRhcnkuY29tMSAwHgYDVQQDExd0
+        bHNjYS5vcmcxLm1pbGl0YXJ5LmNvbTAeFw0yMTA2MTcwNDEzMDBaFw0zMTA2MTUw
+        NDEzMDBaMHgxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYD
+        VQQHEw1TYW4gRnJhbmNpc2NvMRowGAYDVQQKExFvcmcxLm1pbGl0YXJ5LmNvbTEg
+        MB4GA1UEAxMXdGxzY2Eub3JnMS5taWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggq
+        hkjOPQMBBwNCAAR/ARF0HEfXBBtMDX1oR7cEQkZDVxBoqh3Y45FFPGKp9B503Mc9
+        8thhFtlydezaJTRSOzYoH7BG9IgLkaBC4sk8o20wazAOBgNVHQ8BAf8EBAMCAaYw
+        HQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8w
+        KQYDVR0OBCIEIDDCjrFcEwQ5J3lZ2hBJIVpnjHfJNOcI7QUcKnz0nAv7MAoGCCqG
+        SM49BAMCA0gAMEUCIGt8nGOPGCAaakFuR2h3tja4hx+Rxz6kvGm6iZcpN5aFAiEA
+        jiwL4qat+dzIGmfQsJqNBW+XbzpX7FcF+PQKbXG5OBM=
+        -----END CERTIFICATE-----
+  peer2.org2.military.com:
+    url: grpcs://192.168.3.238:3251
+    grpcOptions: {ssl-target-name-override: peer2.org2.military.com, grpc.http2.keepalive_time: 15,
+      request-timeout: 120001, hostnameOverride: peer2.org2.military.com}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICXDCCAgKgAwIBAgIRAPBcLGXzxPtmszQ4t07cnswwCgYIKoZIzj0EAwIweDEL
+        MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+        cmFuY2lzY28xGjAYBgNVBAoTEW9yZzEubWlsaXRhcnkuY29tMSAwHgYDVQQDExd0
+        bHNjYS5vcmcxLm1pbGl0YXJ5LmNvbTAeFw0yMTA2MTcwNDEzMDBaFw0zMTA2MTUw
+        NDEzMDBaMHgxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYD
+        VQQHEw1TYW4gRnJhbmNpc2NvMRowGAYDVQQKExFvcmcxLm1pbGl0YXJ5LmNvbTEg
+        MB4GA1UEAxMXdGxzY2Eub3JnMS5taWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggq
+        hkjOPQMBBwNCAAR/ARF0HEfXBBtMDX1oR7cEQkZDVxBoqh3Y45FFPGKp9B503Mc9
+        8thhFtlydezaJTRSOzYoH7BG9IgLkaBC4sk8o20wazAOBgNVHQ8BAf8EBAMCAaYw
+        HQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8w
+        KQYDVR0OBCIEIDDCjrFcEwQ5J3lZ2hBJIVpnjHfJNOcI7QUcKnz0nAv7MAoGCCqG
+        SM49BAMCA0gAMEUCIGt8nGOPGCAaakFuR2h3tja4hx+Rxz6kvGm6iZcpN5aFAiEA
+        jiwL4qat+dzIGmfQsJqNBW+XbzpX7FcF+PQKbXG5OBM=
+        -----END CERTIFICATE-----
+  peer0.org4.military.com:
+    url: grpcs://192.168.3.238:5051
+    grpcOptions: {ssl-target-name-override: peer0.org4.military.com, grpc.http2.keepalive_time: 15,
+      request-timeout: 120001, hostnameOverride: peer0.org4.military.com}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICWzCCAgKgAwIBAgIRAMydBsBV5MGKpcSj8irKY8owCgYIKoZIzj0EAwIweDEL
+        MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+        cmFuY2lzY28xGjAYBgNVBAoTEW9yZzQubWlsaXRhcnkuY29tMSAwHgYDVQQDExd0
+        bHNjYS5vcmc0Lm1pbGl0YXJ5LmNvbTAeFw0yMTA2MTcwNDEzMDBaFw0zMTA2MTUw
+        NDEzMDBaMHgxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYD
+        VQQHEw1TYW4gRnJhbmNpc2NvMRowGAYDVQQKExFvcmc0Lm1pbGl0YXJ5LmNvbTEg
+        MB4GA1UEAxMXdGxzY2Eub3JnNC5taWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggq
+        hkjOPQMBBwNCAAS/HFgoSnxYSSOIyt2OuQ2dEFMQ5sFed9V7lJADsM9G8Ip66WkN
+        Ye+R5VlyF1ckBxy+HzdQBVAKt93mdlDggehJo20wazAOBgNVHQ8BAf8EBAMCAaYw
+        HQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8w
+        KQYDVR0OBCIEIHzZTOjE87qcAs7mc3Zbnh16b1l/HQqkP3i4YSMpIFY6MAoGCCqG
+        SM49BAMCA0cAMEQCIErdxoIpQV5/qvedLEWnOqg3Tzvln6EihQt09j1nkxqfAiBb
+        ErO7KGRCxfwXW6l1caYqBpGxVvxIYlaSg4kIJrl9xg==
+        -----END CERTIFICATE-----
+  peer1.org4.military.com:
+    url: grpcs://192.168.3.238:5151
+    grpcOptions: {ssl-target-name-override: peer1.org4.military.com, grpc.http2.keepalive_time: 15,
+      request-timeout: 120001, hostnameOverride: peer1.org4.military.com}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICWzCCAgKgAwIBAgIRAMydBsBV5MGKpcSj8irKY8owCgYIKoZIzj0EAwIweDEL
+        MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+        cmFuY2lzY28xGjAYBgNVBAoTEW9yZzQubWlsaXRhcnkuY29tMSAwHgYDVQQDExd0
+        bHNjYS5vcmc0Lm1pbGl0YXJ5LmNvbTAeFw0yMTA2MTcwNDEzMDBaFw0zMTA2MTUw
+        NDEzMDBaMHgxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYD
+        VQQHEw1TYW4gRnJhbmNpc2NvMRowGAYDVQQKExFvcmc0Lm1pbGl0YXJ5LmNvbTEg
+        MB4GA1UEAxMXdGxzY2Eub3JnNC5taWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggq
+        hkjOPQMBBwNCAAS/HFgoSnxYSSOIyt2OuQ2dEFMQ5sFed9V7lJADsM9G8Ip66WkN
+        Ye+R5VlyF1ckBxy+HzdQBVAKt93mdlDggehJo20wazAOBgNVHQ8BAf8EBAMCAaYw
+        HQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8w
+        KQYDVR0OBCIEIHzZTOjE87qcAs7mc3Zbnh16b1l/HQqkP3i4YSMpIFY6MAoGCCqG
+        SM49BAMCA0cAMEQCIErdxoIpQV5/qvedLEWnOqg3Tzvln6EihQt09j1nkxqfAiBb
+        ErO7KGRCxfwXW6l1caYqBpGxVvxIYlaSg4kIJrl9xg==
+        -----END CERTIFICATE-----
+  peer2.org4.military.com:
+    url: grpcs://192.168.3.238:5251
+    grpcOptions: {ssl-target-name-override: peer2.org4.military.com, grpc.http2.keepalive_time: 15,
+      request-timeout: 120001, hostnameOverride: peer2.org4.military.com}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICWzCCAgKgAwIBAgIRAMydBsBV5MGKpcSj8irKY8owCgYIKoZIzj0EAwIweDEL
+        MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+        cmFuY2lzY28xGjAYBgNVBAoTEW9yZzQubWlsaXRhcnkuY29tMSAwHgYDVQQDExd0
+        bHNjYS5vcmc0Lm1pbGl0YXJ5LmNvbTAeFw0yMTA2MTcwNDEzMDBaFw0zMTA2MTUw
+        NDEzMDBaMHgxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYD
+        VQQHEw1TYW4gRnJhbmNpc2NvMRowGAYDVQQKExFvcmc0Lm1pbGl0YXJ5LmNvbTEg
+        MB4GA1UEAxMXdGxzY2Eub3JnNC5taWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggq
+        hkjOPQMBBwNCAAS/HFgoSnxYSSOIyt2OuQ2dEFMQ5sFed9V7lJADsM9G8Ip66WkN
+        Ye+R5VlyF1ckBxy+HzdQBVAKt93mdlDggehJo20wazAOBgNVHQ8BAf8EBAMCAaYw
+        HQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8w
+        KQYDVR0OBCIEIHzZTOjE87qcAs7mc3Zbnh16b1l/HQqkP3i4YSMpIFY6MAoGCCqG
+        SM49BAMCA0cAMEQCIErdxoIpQV5/qvedLEWnOqg3Tzvln6EihQt09j1nkxqfAiBb
+        ErO7KGRCxfwXW6l1caYqBpGxVvxIYlaSg4kIJrl9xg==
+        -----END CERTIFICATE-----
+certificateAuthorities:
+  ca.org2.military.com:
+    url: https://192.168.3.238:8054
+    grpcOptions: {ssl-target-name-override: ca.org2.military.com, allow-insecure: 0,
+      trustServerCertificate: true, hostnameOverride: ca.org2.military.com}
+    httpOptions: {verify: false}
+    registrar:
+    - {enrollId: admin, enrollSecret: adminpw}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICVTCCAfygAwIBAgIRAOHZt4V3mfuemCZ+auolYa0wCgYIKoZIzj0EAwIwdTEL
+        MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+        cmFuY2lzY28xGjAYBgNVBAoTEW9yZzEubWlsaXRhcnkuY29tMR0wGwYDVQQDExRj
+        YS5vcmcxLm1pbGl0YXJ5LmNvbTAeFw0yMTA2MTcwNDEzMDBaFw0zMTA2MTUwNDEz
+        MDBaMHUxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQH
+        Ew1TYW4gRnJhbmNpc2NvMRowGAYDVQQKExFvcmcxLm1pbGl0YXJ5LmNvbTEdMBsG
+        A1UEAxMUY2Eub3JnMS5taWxpdGFyeS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMB
+        BwNCAATwjVXtxXzbllvpJ0dPWIhDarRRMYG3Td/2IkaluU0E3yf6AYjh3vAYCHXu
+        NRzgX0FCJkCW2xZdUfHkTNnroFnMo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0l
+        BBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0O
+        BCIEIBEa2+j9S4AUskCFuckEEPIQ8f9dW3oGUO5UP+IcKDbvMAoGCCqGSM49BAMC
+        A0cAMEQCIBga57wpTLYWj/IBjQzm1zDVH8esFcz+F/CUIRgGmWwWAiBi48vM+hBb
+        jFIXQnnx2ZtMbbBkotNM519LStjabEuV7Q==
+        -----END CERTIFICATE-----
+  ca.org4.military.com:
+    url: https://192.168.3.238:10054
+    grpcOptions: {ssl-target-name-override: ca.org4.military.com, allow-insecure: 0,
+      trustServerCertificate: true, hostnameOverride: ca.org4.military.com}
+    httpOptions: {verify: false}
+    registrar:
+    - {enrollId: admin, enrollSecret: adminpw}
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICVTCCAfugAwIBAgIQNi1PefFwFBdiYE+ftsbfODAKBggqhkjOPQQDAjB1MQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEaMBgGA1UEChMRb3JnNC5taWxpdGFyeS5jb20xHTAbBgNVBAMTFGNh
+        Lm9yZzQubWlsaXRhcnkuY29tMB4XDTIxMDYxNzA0MTMwMFoXDTMxMDYxNTA0MTMw
+        MFowdTELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcT
+        DVNhbiBGcmFuY2lzY28xGjAYBgNVBAoTEW9yZzQubWlsaXRhcnkuY29tMR0wGwYD
+        VQQDExRjYS5vcmc0Lm1pbGl0YXJ5LmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEH
+        A0IABObvazUgNnXVKp60xE18gCUXTAuystAFDcnAZwp7R90tp2ra1hMpIQquEiBh
+        WbOv9iBSIJQcdEwKhlQwv5GsvOajbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNVHSUE
+        FjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4E
+        IgQgXlAXZjmvPLzGn+pjZXSfIFD8I4M7ysJ6gwrpabf0Q64wCgYIKoZIzj0EAwID
+        SAAwRQIgRXAgq3xQzfWlgK868Vew2+RGJzb8WNoBCObwS2vuqjUCIQC2um2jGw0D
+        b4m80kwepe+Hu2w6BZ9l0ql/Z712/j64dg==
+        -----END CERTIFICATE-----

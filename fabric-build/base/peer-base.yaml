@@ -1,0 +1,288 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2.4'
+
+services:
+
+  # org1
+  peer0.org1.military.com:
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.org1.military.com
+      - CORE_PEER_ADDRESS=peer0.org1.military.com:2050
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:2050
+      - CORE_PEER_CHAINCODEADDRESS=peer0.org1.military.com:2051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:2051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.military.com:2050
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org1.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org1MSP
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - /root/fabric/military/crypto-config/peerOrganizations/org1.military.com/peers/peer0.org1.military.com/msp:/etc/hyperledger/fabric/msp
+      - /root/fabric/military/crypto-config/peerOrganizations/org1.military.com/peers/peer0.org1.military.com/tls:/etc/hyperledger/fabric/tls
+      - peer0.org1.military.com:/var/hyperledger/production
+    ports:
+      - 2051:2050
+      - 2061:2051
+
+  peer1.org1.military.com:
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      # Peer specific variabes
+      - CORE_PEER_ID=peer1.org1.military.com
+      - CORE_PEER_ADDRESS=peer1.org1.military.com:2050
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:2050
+      - CORE_PEER_CHAINCODEADDRESS=peer1.org1.military.com:2051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:2051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org1.military.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org1.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org1MSP
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - /root/fabric/military/crypto-config/peerOrganizations/org1.military.com/peers/peer1.org1.military.com/msp:/etc/hyperledger/fabric/msp
+      - /root/fabric/military/crypto-config/peerOrganizations/org1.military.com/peers/peer1.org1.military.com/tls:/etc/hyperledger/fabric/tls
+      - peer1.org1.military.com:/var/hyperledger/production
+    ports:
+      - 2151:2050
+      - 2161:2051
+
+  peer2.org1.military.com:
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      # Peer specific variabes
+      - CORE_PEER_ID=peer2.org1.military.com
+      - CORE_PEER_ADDRESS=peer2.org1.military.com:2050
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:2050
+      - CORE_PEER_CHAINCODEADDRESS=peer2.org1.military.com:2051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:2051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer2.org1.military.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2.org1.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org1MSP
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - /root/fabric/military/crypto-config/peerOrganizations/org1.military.com/peers/peer2.org1.military.com/msp:/etc/hyperledger/fabric/msp
+      - /root/fabric/military/crypto-config/peerOrganizations/org1.military.com/peers/peer2.org1.military.com/tls:/etc/hyperledger/fabric/tls
+      - peer2.org1.military.com:/var/hyperledger/production
+    ports:
+      - 2251:2050
+      - 2261:2051
+
+  # org2
+  peer0.org2.military.com:
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.org2.military.com
+      - CORE_PEER_ADDRESS=peer0.org2.military.com:2050
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:2050
+      - CORE_PEER_CHAINCODEADDRESS=peer0.org2.military.com:2051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:2051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org2.military.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org2MSP
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - /root/fabric/military/crypto-config/peerOrganizations/org2.military.com/peers/peer0.org2.military.com/msp:/etc/hyperledger/fabric/msp
+      - /root/fabric/military/crypto-config/peerOrganizations/org2.military.com/peers/peer0.org2.military.com/tls:/etc/hyperledger/fabric/tls
+      - peer0.org2.military.com:/var/hyperledger/production
+    ports:
+      - 3051:2050
+      - 3061:2051
+
+  peer1.org2.military.com:
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      # Peer specific variabes
+      - CORE_PEER_ID=peer1.org2.military.com
+      - CORE_PEER_ADDRESS=peer1.org2.military.com:2050
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:2050
+      - CORE_PEER_CHAINCODEADDRESS=peer1.org2.military.com:2051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:2051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org2.military.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org2.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org2MSP
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - /root/fabric/military/crypto-config/peerOrganizations/org2.military.com/peers/peer1.org2.military.com/msp:/etc/hyperledger/fabric/msp
+      - /root/fabric/military/crypto-config/peerOrganizations/org2.military.com/peers/peer1.org2.military.com/tls:/etc/hyperledger/fabric/tls
+      - peer1.org2.military.com:/var/hyperledger/production
+    ports:
+      - 3151:2050
+      - 3161:2051
+
+  peer2.org2.military.com:
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      # Peer specific variabes
+      - CORE_PEER_ID=peer2.org2.military.com
+      - CORE_PEER_ADDRESS=peer2.org2.military.com:2050
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:2050
+      - CORE_PEER_CHAINCODEADDRESS=peer2.org2.military.com:2051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:2051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer2.org2.military.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2.org2.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org2MSP
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - /root/fabric/military/crypto-config/peerOrganizations/org2.military.com/peers/peer2.org2.military.com/msp:/etc/hyperledger/fabric/msp
+      - /root/fabric/military/crypto-config/peerOrganizations/org2.military.com/peers/peer2.org2.military.com/tls:/etc/hyperledger/fabric/tls
+      - peer2.org2.military.com:/var/hyperledger/production
+    ports:
+      - 3251:2050
+      - 3261:2051
+
+  # org3
+  peer0.org3.military.com:
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.org3.military.com
+      - CORE_PEER_ADDRESS=peer0.org3.military.com:2050
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:2050
+      - CORE_PEER_CHAINCODEADDRESS=peer0.org3.military.com:2051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:2051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org3.military.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org3.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org3MSP
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - /root/fabric/military/crypto-config/peerOrganizations/org3.military.com/peers/peer0.org3.military.com/msp:/etc/hyperledger/fabric/msp
+      - /root/fabric/military/crypto-config/peerOrganizations/org3.military.com/peers/peer0.org3.military.com/tls:/etc/hyperledger/fabric/tls
+      - peer0.org3.military.com:/var/hyperledger/production
+    ports:
+      - 4051:2050
+      - 4061:2051
+
+  peer1.org3.military.com:
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      # Peer specific variabes
+      - CORE_PEER_ID=peer1.org3.military.com
+      - CORE_PEER_ADDRESS=peer1.org3.military.com:2050
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:2050
+      - CORE_PEER_CHAINCODEADDRESS=peer1.org3.military.com:2051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:2051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org3.military.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org3.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org3MSP
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - /root/fabric/military/crypto-config/peerOrganizations/org3.military.com/peers/peer1.org3.military.com/msp:/etc/hyperledger/fabric/msp
+      - /root/fabric/military/crypto-config/peerOrganizations/org3.military.com/peers/peer1.org3.military.com/tls:/etc/hyperledger/fabric/tls
+      - peer1.org3.military.com:/var/hyperledger/production
+    ports:
+      - 4151:2050
+      - 4161:2051
+
+  peer2.org3.military.com:
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      # Peer specific variabes
+      - CORE_PEER_ID=peer2.org3.military.com
+      - CORE_PEER_ADDRESS=peer2.org3.military.com:2050
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:2050
+      - CORE_PEER_CHAINCODEADDRESS=peer2.org3.military.com:2051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:2051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer2.org3.military.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2.org3.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org3MSP
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - /root/fabric/military/crypto-config/peerOrganizations/org3.military.com/peers/peer2.org3.military.com/msp:/etc/hyperledger/fabric/msp
+      - /root/fabric/military/crypto-config/peerOrganizations/org3.military.com/peers/peer2.org3.military.com/tls:/etc/hyperledger/fabric/tls
+      - peer2.org3.military.com:/var/hyperledger/production
+    ports:
+      - 4251:2050
+      - 4261:2051
+
+  #org4
+  peer0.org4.military.com:
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.org4.military.com
+      - CORE_PEER_ADDRESS=peer0.org4.military.com:2050
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:2050
+      - CORE_PEER_CHAINCODEADDRESS=peer0.org4.military.com:2051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:2051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org4.military.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org4.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org4MSP
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - /root/fabric/military/crypto-config/peerOrganizations/org4.military.com/peers/peer0.org4.military.com/msp:/etc/hyperledger/fabric/msp
+      - /root/fabric/military/crypto-config/peerOrganizations/org4.military.com/peers/peer0.org4.military.com/tls:/etc/hyperledger/fabric/tls
+      - peer0.org4.military.com:/var/hyperledger/production
+    ports:
+      - 5051:2050
+      - 5061:2051
+
+  peer1.org4.military.com:
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      # Peer specific variabes
+      - CORE_PEER_ID=peer1.org4.military.com
+      - CORE_PEER_ADDRESS=peer1.org4.military.com:2050
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:2050
+      - CORE_PEER_CHAINCODEADDRESS=peer1.org4.military.com:2051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:2051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org4.military.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.org4.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org4MSP
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - /root/fabric/military/crypto-config/peerOrganizations/org4.military.com/peers/peer1.org4.military.com/msp:/etc/hyperledger/fabric/msp
+      - /root/fabric/military/crypto-config/peerOrganizations/org4.military.com/peers/peer1.org4.military.com/tls:/etc/hyperledger/fabric/tls
+      - peer1.org4.military.com:/var/hyperledger/production
+    ports:
+      - 5151:2050
+      - 5161:2051
+
+  peer2.org4.military.com:
+    extends:
+      file: base.yaml
+      service: peer-base
+    environment:
+      # Peer specific variabes
+      - CORE_PEER_ID=peer2.org4.military.com
+      - CORE_PEER_ADDRESS=peer2.org4.military.com:2050
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:2050
+      - CORE_PEER_CHAINCODEADDRESS=peer2.org4.military.com:2051
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:2051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer2.org4.military.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer2.org4.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org4MSP
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - /root/fabric/military/crypto-config/peerOrganizations/org4.military.com/peers/peer2.org4.military.com/msp:/etc/hyperledger/fabric/msp
+      - /root/fabric/military/crypto-config/peerOrganizations/org4.military.com/peers/peer2.org4.military.com/tls:/etc/hyperledger/fabric/tls
+      - peer2.org4.military.com:/var/hyperledger/production
+    ports:
+      - 5251:2050
+      - 5261:2051

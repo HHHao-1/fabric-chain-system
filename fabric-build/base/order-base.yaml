@@ -1,0 +1,87 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: "2.4"
+
+services:
+  orderer.military.com:
+    extends:
+      file: base.yaml
+      service: orderer-base
+    environment:
+      - ORDERER_GENERAL_LISTENPORT=1050
+      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:1053
+    volumes:
+      - /root/fabric/military/channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer.military.com/msp:/var/hyperledger/orderer/msp
+      - /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer.military.com/tls/:/var/hyperledger/orderer/tls
+      - orderer.military.com:/var/hyperledger/production/orderer
+    ports:
+      - 1011:1050
+      - 1021:1053
+
+  orderer2.military.com:
+    extends:
+      file: base.yaml
+      service: orderer-base
+    environment:
+      - ORDERER_GENERAL_LISTENPORT=1050
+      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:1053
+    volumes:
+      - /root/fabric/military/channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer2.military.com/msp:/var/hyperledger/orderer/msp
+      - /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer2.military.com/tls/:/var/hyperledger/orderer/tls
+      - orderer2.military.com:/var/hyperledger/production/orderer
+    ports:
+      - 1012:1050
+      - 1022:1053
+
+  orderer3.military.com:
+    extends:
+      file: base.yaml
+      service: orderer-base
+    environment:
+      - ORDERER_GENERAL_LISTENPORT=1050
+      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:1053
+    volumes:
+      - /root/fabric/military/channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer3.military.com/msp:/var/hyperledger/orderer/msp
+      - /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer3.military.com/tls/:/var/hyperledger/orderer/tls
+      - orderer3.military.com:/var/hyperledger/production/orderer
+    ports:
+      - 1013:1050
+      - 1023:1053
+
+  orderer4.military.com:
+    extends:
+      file: base.yaml
+      service: orderer-base
+    environment:
+      - ORDERER_GENERAL_LISTENPORT=1050
+      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:1053
+    volumes:
+      - /root/fabric/military/channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer4.military.com/msp:/var/hyperledger/orderer/msp
+      - /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer4.military.com/tls/:/var/hyperledger/orderer/tls
+      - orderer4.military.com:/var/hyperledger/production/orderer
+    ports:
+      - 1014:1050
+      - 1024:1053
+
+  orderer5.military.com:
+    extends:
+      file: base.yaml
+      service: orderer-base
+    environment:
+      - ORDERER_GENERAL_LISTENPORT=1050
+      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:1053
+    volumes:
+      - /root/fabric/military/channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer5.military.com/msp:/var/hyperledger/orderer/msp
+      - /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer5.military.com/tls/:/var/hyperledger/orderer/tls
+      - orderer5.military.com:/var/hyperledger/production/orderer
+    ports:
+      - 1015:1050
+      - 1025:1053

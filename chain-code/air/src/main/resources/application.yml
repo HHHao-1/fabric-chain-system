@@ -1,0 +1,22 @@
+server:
+  port: 8089
+  servlet:
+    context-path: /air
+spring:
+  fabric:
+    chaincode:
+      identify: commoncc
+      name: Common
+      version: 1.0
+    channel: air-force-channel
+    peers: 6
+    organizations:
+      - org3
+      - org4
+    name: military_net
+    gateway:
+      wallet:
+        identify: admin
+    network:
+      file: connection-org4.yml
+      name: military_net

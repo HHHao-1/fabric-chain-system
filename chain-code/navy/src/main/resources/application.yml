@@ -1,0 +1,24 @@
+server:
+  port: 8087
+  servlet:
+    context-path: /navy
+spring:
+  fabric:
+    chaincode:
+#      identify: commoncc
+      identify: functioncc
+#      name: Common
+      name: Function Chaincode
+      version: 1.0
+    channel: navy-channel
+    peers: 6
+    organizations:
+      - org1
+      - org4
+    name: military_net
+    gateway:
+      wallet:
+        identify: admin
+    network:
+      file: connection-org4.yml
+      name: military_net

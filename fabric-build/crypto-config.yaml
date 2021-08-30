@@ -1,0 +1,44 @@
+OrdererOrgs:
+  - Name: Orderer
+    Domain: military.com
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: orderer
+      - Hostname: orderer2
+      - Hostname: orderer3
+      - Hostname: orderer4
+      - Hostname: orderer5
+
+PeerOrgs:
+  - Name: Org1
+    Domain: org1.military.com
+    EnableNodeOUs: true
+    Template:
+      Count: 3
+    Users:
+      Count: 3
+
+  - Name: Org2
+    Domain: org2.military.com
+    EnableNodeOUs: true
+    Template:
+      Count: 3
+    Users:
+      Count: 3
+
+  - Name: Org3
+    Domain: org3.military.com
+    EnableNodeOUs: true
+    Template:
+      Count: 3
+    Users:
+      Count: 3
+
+
+  - Name: Org4
+    Domain: org4.military.com
+    EnableNodeOUs: true
+    Template:
+      Count: 3
+    Users:
+      Count: 3

@@ -1,0 +1,166 @@
+version: '2.4'
+
+services:
+  #org1
+  cli1_1:
+    extends:
+      file: base.yaml
+      service: cli-base
+    environment:
+      - CORE_PEER_ID=cli1_1
+      - CORE_PEER_ADDRESS=peer0.org1.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.military.com/peers/peer0.org1.military.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.military.com/peers/peer0.org1.military.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.military.com/peers/peer0.org1.military.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.military.com/users/Admin@org1.military.com/msp
+  cli1_2:
+    extends:
+      file: base.yaml
+      service: cli-base
+    environment:
+      - CORE_PEER_ID=cli1_2
+      - CORE_PEER_ADDRESS=peer1.org1.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.military.com/peers/peer1.org1.military.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.military.com/peers/peer1.org1.military.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.military.com/peers/peer1.org1.military.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.military.com/users/Admin@org1.military.com/msp
+  cli1_3:
+    extends:
+      file: base.yaml
+      service: cli-base
+    environment:
+      - CORE_PEER_ID=cli1_3
+      - CORE_PEER_ADDRESS=peer2.org1.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.military.com/peers/peer2.org1.military.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.military.com/peers/peer2.org1.military.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.military.com/peers/peer2.org1.military.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.military.com/users/Admin@org1.military.com/msp
+
+  #org2
+  cli2_1:
+    extends:
+      file: base.yaml
+      service: cli-base
+    environment:
+      - CORE_PEER_ID=cli2_1
+      - CORE_PEER_ADDRESS=peer0.org2.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org2MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.military.com/peers/peer0.org2.military.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.military.com/peers/peer0.org2.military.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.military.com/peers/peer0.org2.military.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.military.com/users/Admin@org2.military.com/msp
+  cli2_2:
+    extends:
+      file: base.yaml
+      service: cli-base
+    environment:
+      - CORE_PEER_ID=cli2_2
+      - CORE_PEER_ADDRESS=peer1.org2.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org2MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.military.com/peers/peer1.org2.military.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.military.com/peers/peer1.org2.military.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.military.com/peers/peer1.org2.military.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.military.com/users/Admin@org2.military.com/msp
+  cli2_3:
+    extends:
+      file: base.yaml
+      service: cli-base
+    environment:
+      - CORE_PEER_ID=cli2_3
+      - CORE_PEER_ADDRESS=peer2.org2.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org2MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.military.com/peers/peer2.org2.military.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.military.com/peers/peer2.org2.military.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.military.com/peers/peer2.org2.military.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.military.com/users/Admin@org2.military.com/msp
+
+  #org3
+  cli3_1:
+    extends:
+      file: base.yaml
+      service: cli-base
+    environment:
+      - CORE_PEER_ID=cli3_1
+      - CORE_PEER_ADDRESS=peer0.org3.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org3MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.military.com/peers/peer0.org3.military.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.military.com/peers/peer0.org3.military.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.military.com/peers/peer0.org3.military.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.military.com/users/Admin@org3.military.com/msp
+  cli3_2:
+    extends:
+      file: base.yaml
+      service: cli-base
+    environment:
+      - CORE_PEER_ID=cli3_2
+      - CORE_PEER_ADDRESS=peer1.org3.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org3MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.military.com/peers/peer1.org3.military.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.military.com/peers/peer1.org3.military.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.military.com/peers/peer1.org3.military.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.military.com/users/Admin@org3.military.com/msp
+  cli3_3:
+    extends:
+      file: base.yaml
+      service: cli-base
+    environment:
+      - CORE_PEER_ID=cli3_3
+      - CORE_PEER_ADDRESS=peer2.org3.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org3MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.military.com/peers/peer2.org3.military.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.military.com/peers/peer2.org3.military.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.military.com/peers/peer2.org3.military.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.military.com/users/Admin@org3.military.com/msp
+
+  #org4
+  cli4_1:
+    extends:
+      file: base.yaml
+      service: cli-base
+    environment:
+      - CORE_PEER_ID=cli4_1
+      - CORE_PEER_ADDRESS=peer0.org4.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org4MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.military.com/peers/peer0.org4.military.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.military.com/peers/peer0.org4.military.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.military.com/peers/peer0.org4.military.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.military.com/users/Admin@org4.military.com/msp
+  cli4_2:
+    extends:
+      file: base.yaml
+      service: cli-base
+    environment:
+      - CORE_PEER_ID=cli4_2
+      - CORE_PEER_ADDRESS=peer1.org4.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org4MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.military.com/peers/peer1.org4.military.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.military.com/peers/peer1.org4.military.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.military.com/peers/peer1.org4.military.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.military.com/users/Admin@org4.military.com/msp
+  cli4_3:
+    extends:
+      file: base.yaml
+      service: cli-base
+    environment:
+      - CORE_PEER_ID=cli4_3
+      - CORE_PEER_ADDRESS=peer2.org4.military.com:2050
+      - CORE_PEER_LOCALMSPID=Org4MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.military.com/peers/peer2.org4.military.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.military.com/peers/peer2.org4.military.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.military.com/peers/peer2.org4.military.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org4.military.com/users/Admin@org4.military.com/msp

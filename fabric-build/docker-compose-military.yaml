@@ -1,0 +1,486 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: "2.4"
+
+volumes:
+  orderer.military.com:
+  orderer2.military.com:
+  orderer3.military.com:
+  orderer4.military.com:
+  orderer5.military.com:
+  peer0.org1.military.com:
+  peer1.org1.military.com:
+  peer2.org1.military.com:
+  peer0.org2.military.com:
+  peer1.org2.military.com:
+  peer2.org2.military.com:
+  peer0.org3.military.com:
+  peer1.org3.military.com:
+  peer2.org3.military.com:
+  peer0.org4.military.com:
+  peer1.org4.military.com:
+  peer2.org4.military.com:
+
+networks:
+  military:
+    name: military_net
+
+services:
+  orderer.military.com:
+    extends:
+      file: base/order-base.yaml
+      service: orderer.military.com
+    container_name: orderer.military.com
+    networks:
+      - military
+  orderer2.military.com:
+    extends:
+      file: base/order-base.yaml
+      service: orderer2.military.com
+    container_name: orderer2.military.com
+    networks:
+      - military
+  orderer3.military.com:
+    extends:
+      file: base/order-base.yaml
+      service: orderer3.military.com
+    container_name: orderer3.military.com
+    networks:
+      - military
+  orderer4.military.com:
+    extends:
+      file: base/order-base.yaml
+      service: orderer4.military.com
+    container_name: orderer4.military.com
+    networks:
+      - military
+  orderer5.military.com:
+    extends:
+      file: base/order-base.yaml
+      service: orderer5.military.com
+    container_name: orderer5.military.com
+    networks:
+      - military
+
+  peer0.org1.military.com:
+    container_name: peer0.org1.military.com
+    extends:
+      file: base/peer-base.yaml
+      service: peer0.org1.military.com
+    networks:
+      - military
+    depends_on:
+      - orderer.military.com
+      - orderer2.military.com
+      - orderer3.military.com
+      - orderer4.military.com
+      - orderer5.military.com
+
+  peer1.org1.military.com:
+    container_name: peer1.org1.military.com
+    extends:
+      file: base/peer-base.yaml
+      service: peer1.org1.military.com
+    networks:
+      - military
+    depends_on:
+      - orderer.military.com
+      - orderer2.military.com
+      - orderer3.military.com
+      - orderer4.military.com
+      - orderer5.military.com
+
+  peer2.org1.military.com:
+    container_name: peer2.org1.military.com
+    extends:
+      file: base/peer-base.yaml
+      service: peer2.org1.military.com
+    networks:
+      - military
+    depends_on:
+      - orderer.military.com
+      - orderer2.military.com
+      - orderer3.military.com
+      - orderer4.military.com
+      - orderer5.military.com
+
+  peer0.org2.military.com:
+    container_name: peer0.org2.military.com
+    extends:
+      file: base/peer-base.yaml
+      service: peer0.org2.military.com
+    networks:
+      - military
+    depends_on:
+      - orderer.military.com
+      - orderer2.military.com
+      - orderer3.military.com
+      - orderer4.military.com
+      - orderer5.military.com
+
+  peer1.org2.military.com:
+    container_name: peer1.org2.military.com
+    extends:
+      file: base/peer-base.yaml
+      service: peer1.org2.military.com
+    networks:
+      - military
+    depends_on:
+      - orderer.military.com
+      - orderer2.military.com
+      - orderer3.military.com
+      - orderer4.military.com
+      - orderer5.military.com
+
+  peer2.org2.military.com:
+    container_name: peer2.org2.military.com
+    extends:
+      file: base/peer-base.yaml
+      service: peer2.org2.military.com
+    networks:
+      - military
+    depends_on:
+      - orderer.military.com
+      - orderer2.military.com
+      - orderer3.military.com
+      - orderer4.military.com
+      - orderer5.military.com
+
+  peer0.org3.military.com:
+    container_name: peer0.org3.military.com
+    extends:
+      file: base/peer-base.yaml
+      service: peer0.org3.military.com
+    networks:
+      - military
+    depends_on:
+      - orderer.military.com
+      - orderer2.military.com
+      - orderer3.military.com
+      - orderer4.military.com
+      - orderer5.military.com
+
+  peer1.org3.military.com:
+    container_name: peer1.org3.military.com
+    extends:
+      file: base/peer-base.yaml
+      service: peer1.org3.military.com
+    networks:
+      - military
+    depends_on:
+      - orderer.military.com
+      - orderer2.military.com
+      - orderer3.military.com
+      - orderer4.military.com
+      - orderer5.military.com
+
+  peer2.org3.military.com:
+    container_name: peer2.org3.military.com
+    extends:
+      file: base/peer-base.yaml
+      service: peer2.org3.military.com
+    networks:
+      - military
+    depends_on:
+      - orderer.military.com
+      - orderer2.military.com
+      - orderer3.military.com
+      - orderer4.military.com
+      - orderer5.military.com
+
+  peer0.org4.military.com:
+    container_name: peer0.org4.military.com
+    extends:
+      file: base/peer-base.yaml
+      service: peer0.org4.military.com
+    networks:
+      - military
+    depends_on:
+      - orderer.military.com
+      - orderer2.military.com
+      - orderer3.military.com
+      - orderer4.military.com
+      - orderer5.military.com
+
+  peer1.org4.military.com:
+    container_name: peer1.org4.military.com
+    extends:
+      file: base/peer-base.yaml
+      service: peer1.org4.military.com
+    networks:
+      - military
+    depends_on:
+      - orderer.military.com
+      - orderer2.military.com
+      - orderer3.military.com
+      - orderer4.military.com
+      - orderer5.military.com
+
+  peer2.org4.military.com:
+    container_name: peer2.org4.military.com
+    extends:
+      file: base/peer-base.yaml
+      service: peer2.org4.military.com
+    networks:
+      - military
+    depends_on:
+      - orderer.military.com
+      - orderer2.military.com
+      - orderer3.military.com
+      - orderer4.military.com
+      - orderer5.military.com
+
+  cli1_1:
+    container_name: cli1_1
+    extends:
+      file: base/cli-base.yaml
+      service: cli1_1
+    networks:
+      - military
+    depends_on:
+      - peer0.org1.military.com
+      - peer1.org1.military.com
+      - peer2.org1.military.com
+      - peer0.org2.military.com
+      - peer1.org2.military.com
+      - peer2.org2.military.com
+      - peer0.org3.military.com
+      - peer1.org3.military.com
+      - peer2.org3.military.com
+      - peer0.org4.military.com
+      - peer1.org4.military.com
+      - peer2.org4.military.com
+
+  cli1_2:
+    container_name: cli1_2
+    extends:
+      file: base/cli-base.yaml
+      service: cli1_2
+    networks:
+      - military
+    depends_on:
+      - peer0.org1.military.com
+      - peer1.org1.military.com
+      - peer2.org1.military.com
+      - peer0.org2.military.com
+      - peer1.org2.military.com
+      - peer2.org2.military.com
+      - peer0.org3.military.com
+      - peer1.org3.military.com
+      - peer2.org3.military.com
+      - peer0.org4.military.com
+      - peer1.org4.military.com
+      - peer2.org4.military.com
+
+  cli1_3:
+    container_name: cli1_3
+    extends:
+      file: base/cli-base.yaml
+      service: cli1_3
+    networks:
+      - military
+    depends_on:
+      - peer0.org1.military.com
+      - peer1.org1.military.com
+      - peer2.org1.military.com
+      - peer0.org2.military.com
+      - peer1.org2.military.com
+      - peer2.org2.military.com
+      - peer0.org3.military.com
+      - peer1.org3.military.com
+      - peer2.org3.military.com
+      - peer0.org4.military.com
+      - peer1.org4.military.com
+      - peer2.org4.military.com
+
+  cli2_1:
+    container_name: cli2_1
+    extends:
+      file: base/cli-base.yaml
+      service: cli2_1
+    networks:
+      - military
+    depends_on:
+      - peer0.org1.military.com
+      - peer1.org1.military.com
+      - peer2.org1.military.com
+      - peer0.org2.military.com
+      - peer1.org2.military.com
+      - peer2.org2.military.com
+      - peer0.org3.military.com
+      - peer1.org3.military.com
+      - peer2.org3.military.com
+      - peer0.org4.military.com
+      - peer1.org4.military.com
+      - peer2.org4.military.com
+
+  cli2_2:
+    container_name: cli2_2
+    extends:
+      file: base/cli-base.yaml
+      service: cli2_2
+    networks:
+      - military
+    depends_on:
+      - peer0.org1.military.com
+      - peer1.org1.military.com
+      - peer2.org1.military.com
+      - peer0.org2.military.com
+      - peer1.org2.military.com
+      - peer2.org2.military.com
+      - peer0.org3.military.com
+      - peer1.org3.military.com
+      - peer2.org3.military.com
+      - peer0.org4.military.com
+      - peer1.org4.military.com
+      - peer2.org4.military.com
+
+  cli2_3:
+    container_name: cli2_3
+    extends:
+      file: base/cli-base.yaml
+      service: cli2_3
+    networks:
+      - military
+    depends_on:
+      - peer0.org1.military.com
+      - peer1.org1.military.com
+      - peer2.org1.military.com
+      - peer0.org2.military.com
+      - peer1.org2.military.com
+      - peer2.org2.military.com
+      - peer0.org3.military.com
+      - peer1.org3.military.com
+      - peer2.org3.military.com
+      - peer0.org4.military.com
+      - peer1.org4.military.com
+      - peer2.org4.military.com
+
+  cli3_1:
+    container_name: cli3_1
+    extends:
+      file: base/cli-base.yaml
+      service: cli3_1
+    networks:
+      - military
+    depends_on:
+      - peer0.org1.military.com
+      - peer1.org1.military.com
+      - peer2.org1.military.com
+      - peer0.org2.military.com
+      - peer1.org2.military.com
+      - peer2.org2.military.com
+      - peer0.org3.military.com
+      - peer1.org3.military.com
+      - peer2.org3.military.com
+      - peer0.org4.military.com
+      - peer1.org4.military.com
+      - peer2.org4.military.com
+
+  cli3_2:
+    container_name: cli3_2
+    extends:
+      file: base/cli-base.yaml
+      service: cli3_2
+    networks:
+      - military
+    depends_on:
+      - peer0.org1.military.com
+      - peer1.org1.military.com
+      - peer2.org1.military.com
+      - peer0.org2.military.com
+      - peer1.org2.military.com
+      - peer2.org2.military.com
+      - peer0.org3.military.com
+      - peer1.org3.military.com
+      - peer2.org3.military.com
+      - peer0.org4.military.com
+      - peer1.org4.military.com
+      - peer2.org4.military.com
+
+  cli3_3:
+    container_name: cli3_3
+    extends:
+      file: base/cli-base.yaml
+      service: cli3_3
+    networks:
+      - military
+    depends_on:
+      - peer0.org1.military.com
+      - peer1.org1.military.com
+      - peer2.org1.military.com
+      - peer0.org2.military.com
+      - peer1.org2.military.com
+      - peer2.org2.military.com
+      - peer0.org3.military.com
+      - peer1.org3.military.com
+      - peer2.org3.military.com
+      - peer0.org4.military.com
+      - peer1.org4.military.com
+      - peer2.org4.military.com
+
+  cli4_1:
+    container_name: cli4_1
+    extends:
+      file: base/cli-base.yaml
+      service: cli4_1
+    networks:
+      - military
+    depends_on:
+      - peer0.org1.military.com
+      - peer1.org1.military.com
+      - peer2.org1.military.com
+      - peer0.org2.military.com
+      - peer1.org2.military.com
+      - peer2.org2.military.com
+      - peer0.org3.military.com
+      - peer1.org3.military.com
+      - peer2.org3.military.com
+      - peer0.org4.military.com
+      - peer1.org4.military.com
+      - peer2.org4.military.com
+
+  cli4_2:
+    container_name: cli4_2
+    extends:
+      file: base/cli-base.yaml
+      service: cli4_2
+    networks:
+      - military
+    depends_on:
+      - peer0.org1.military.com
+      - peer1.org1.military.com
+      - peer2.org1.military.com
+      - peer0.org2.military.com
+      - peer1.org2.military.com
+      - peer2.org2.military.com
+      - peer0.org3.military.com
+      - peer1.org3.military.com
+      - peer2.org3.military.com
+      - peer0.org4.military.com
+      - peer1.org4.military.com
+      - peer2.org4.military.com
+
+  cli4_3:
+    container_name: cli4_3
+    extends:
+      file: base/cli-base.yaml
+      service: cli4_3
+    networks:
+      - military
+    depends_on:
+      - peer0.org1.military.com
+      - peer1.org1.military.com
+      - peer2.org1.military.com
+      - peer0.org2.military.com
+      - peer1.org2.military.com
+      - peer2.org2.military.com
+      - peer0.org3.military.com
+      - peer1.org3.military.com
+      - peer2.org3.military.com
+      - peer0.org4.military.com
+      - peer1.org4.military.com
+      - peer2.org4.military.com

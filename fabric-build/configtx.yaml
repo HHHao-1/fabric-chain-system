@@ -1,0 +1,308 @@
+---
+Organizations:
+  - &OrdererOrg
+    Name: OrdererOrg
+    ID: OrdererMSP
+    MSPDir: /root/fabric/military/crypto-config/ordererOrganizations/military.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrdererMSP.admin')"
+    OrdererEndpoints:
+      - orderer.military.com:1050
+      - orderer2.military.com:1050
+      - orderer3.military.com:1050
+      - orderer4.military.com:1050
+      - orderer5.military.com:1050
+
+  - &Org1
+    Name: Org1MSP
+    ID: Org1MSP
+    MSPDir: /root/fabric/military/crypto-config/peerOrganizations/org1.military.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('Org1MSP.admin', 'Org1MSP.peer', 'Org1MSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('Org1MSP.admin', 'Org1MSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('Org1MSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('Org1MSP.peer')"
+    AnchorPeers:
+      - Host: peer0.org1.military.com
+        Port: 2050
+
+  - &Org2
+    Name: Org2MSP
+    ID: Org2MSP
+    MSPDir: /root/fabric/military/crypto-config/peerOrganizations/org2.military.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('Org2MSP.admin', 'Org2MSP.peer', 'Org2MSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('Org2MSP.admin', 'Org2MSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('Org2MSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('Org2MSP.peer')"
+    AnchorPeers:
+      - Host: peer0.org2.military.com
+        Port: 3050
+
+  - &Org3
+    Name: Org3MSP
+    ID: Org3MSP
+    MSPDir: /root/fabric/military/crypto-config/peerOrganizations/org3.military.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('Org3MSP.admin', 'Org3MSP.peer', 'Org3MSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('Org3MSP.admin', 'Org3MSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('Org3MSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('Org3MSP.peer')"
+    AnchorPeers:
+      - Host: peer0.org3.military.com
+        Port: 4050
+
+  - &Org4
+    Name: Org4MSP
+    ID: Org4MSP
+    MSPDir: /root/fabric/military/crypto-config/peerOrganizations/org4.military.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('Org4MSP.admin', 'Org4MSP.peer', 'Org4MSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('Org4MSP.admin', 'Org4MSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('Org4MSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('Org4MSP.peer')"
+    AnchorPeers:
+      - Host: peer0.org4.military.com
+        Port: 5050
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+
+  Addresses:
+    - orderer.military.com:1050
+    - orderer2.military.com:1050
+    - orderer3.military.com:1050
+    - orderer4.military.com:1050
+    - orderer5.military.com:1050
+
+  EtcdRaft:
+    Consenters:
+      - Host: orderer.military.com
+        Port: 1050
+        ClientTLSCert: /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer.military.com/tls/server.crt
+        ServerTLSCert: /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer.military.com/tls/server.crt
+      - Host: orderer2.military.com
+        Port: 1050
+        ClientTLSCert: /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer2.military.com/tls/server.crt
+        ServerTLSCert: /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer2.military.com/tls/server.crt
+      - Host: orderer3.military.com
+        Port: 1050
+        ClientTLSCert: /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer3.military.com/tls/server.crt
+        ServerTLSCert: /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer3.military.com/tls/server.crt
+      - Host: orderer4.military.com
+        Port: 1050
+        ClientTLSCert: /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer4.military.com/tls/server.crt
+        ServerTLSCert: /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer4.military.com/tls/server.crt
+      - Host: orderer5.military.com
+        Port: 1050
+        ClientTLSCert: /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer5.military.com/tls/server.crt
+        ServerTLSCert: /root/fabric/military/crypto-config/ordererOrganizations/military.com/orderers/orderer5.military.com/tls/server.crt
+
+  # Batch Timeout: The amount of time to wait before creating a batch
+  BatchTimeout: 2s
+
+  # Batch Size: Controls the number of messages batched into a block
+  BatchSize:
+    # Max Message Count: The maximum number of messages to permit in a batch
+    MaxMessageCount: 10
+
+    # Absolute Max Bytes: The absolute maximum number of bytes allowed for
+    # the serialized messages in a batch.
+    AbsoluteMaxBytes: 99 MB
+
+    # Preferred Max Bytes: The preferred maximum number of bytes allowed for
+    # the serialized messages in a batch. A message larger than the preferred
+    # max bytes will result in a batch larger than preferred max bytes.
+    PreferredMaxBytes: 512 KB
+
+  # Organizations is the list of orgs which are defined as participants on
+  # the orderer side of the network
+  Organizations:
+
+  # Policies defines the set of policies at this level of the config tree
+  # For Orderer policies, their canonical path is
+  #   /Channel/Orderer/<PolicyName>
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    # BlockValidation specifies what signatures must be included in the block
+    # from the orderer for the peer to validate it.
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+################################################################################
+#
+#   CHANNEL
+#
+#   This section defines the values to encode into a config transaction or
+#   genesis block for channel related parameters.
+#
+################################################################################
+Channel: &ChannelDefaults
+  # Policies defines the set of policies at this level of the config tree
+  # For Channel policies, their canonical path is
+  #   /Channel/<PolicyName>
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+
+  # Capabilities describes the channel level capabilities, see the
+  # dedicated Capabilities section elsewhere in this file for a full
+  # description
+  Capabilities:
+    <<: *ChannelCapabilities
+
+################################################################################
+#
+#   Profile
+#
+#   - Different configuration profiles may be encoded here to be specified
+#   as parameters to the configtxgen tool
+#
+################################################################################
+Profiles:
+  FourOrgsOrdererGenesis:
+    <<: *ChannelDefaults
+    # Capabilities:
+    #   <<: *ApplicationCapabilities
+    # <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+        - *OrdererOrg
+      Capabilities:
+        <<: *OrdererCapabilities
+    Consortiums:
+      SampleConsortium:
+        Organizations:
+          - *Org1
+          - *Org2
+          - *Org3
+          - *Org4
+    # Application:
+    #   <<: *ApplicationDefaults
+    #   Organizations:
+    #     - *Org1
+    #     - *Org2
+    #     - *Org3
+    #     - *Org4
+    # Capabilities:
+    #   <<: *ApplicationCapabilities
+  NavyChannel:
+    Consortium: SampleConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *Org1
+        - *Org4
+      Capabilities:
+        <<: *ApplicationCapabilities
+  ArmyChannel:
+    Consortium: SampleConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *Org2
+        - *Org4
+      Capabilities:
+        <<: *ApplicationCapabilities
+  AirForceChannel:
+    Consortium: SampleConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *Org3
+        - *Org4
+      Capabilities:
+        <<: *ApplicationCapabilities
