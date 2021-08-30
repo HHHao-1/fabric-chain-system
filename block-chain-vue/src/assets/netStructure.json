@@ -1,0 +1,284 @@
+{
+  "categories": [
+    {
+      "name": "海军",
+      "itemStyle": {
+        "color": "#4992ff"
+      }
+    },
+    {
+      "name": "陆军",
+      "itemStyle": {
+        "color": "#7cffb2"
+      }
+    },
+    {
+      "name": "空军",
+      "itemStyle": {
+        "color": "#fddd60"
+      }
+    },
+    {
+      "name": "指挥中心",
+      "itemStyle": {
+        "color": "#ff6e76"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "id": 0,
+      "name": "舰艇0",
+      "value": 10,
+      "symbolSize": 50,
+      "category": 0,
+      "ip": "192.168.3.238"
+    },
+    {
+      "id": 1,
+      "name": "舰艇1",
+      "value": 10,
+      "symbolSize": 50,
+      "category": 0,
+      "ip": "192.168.3.238"
+    },
+    {
+      "id": 2,
+      "name": "舰艇2",
+      "value": 10,
+      "symbolSize": 50,
+      "category": 0,
+      "ip": "192.168.3.238"
+    },
+    {
+      "id": 3,
+      "name": "高炮0",
+      "value": 10,
+      "symbolSize": 50,
+      "category": 1,
+      "ip": "192.168.3.238"
+    },
+    {
+      "id": 4,
+      "name": "高炮1",
+      "value": 110,
+      "symbolSize": 50,
+      "category": 1,
+      "ip": "192.168.3.238"
+    },
+    {
+      "id": 5,
+      "name": "高炮2",
+      "value": 100,
+      "symbolSize": 50,
+      "category": 1,
+      "ip": "192.168.3.238"
+    },
+    {
+      "id": 6,
+      "name": "战斗机0",
+      "value": 1000,
+      "symbolSize": 50,
+      "category": 2,
+      "ip": "192.168.3.238"
+    },
+    {
+      "id": 7,
+      "name": "战斗机1",
+      "value": 10,
+      "symbolSize": 50,
+      "category": 2,
+      "ip": "192.168.3.238"
+    },
+    {
+      "id": 8,
+      "name": "战斗机2",
+      "value": 8,
+      "symbolSize": 50,
+      "category": 2,
+      "ip": "192.168.3.238"
+    },
+    {
+      "id": 9,
+      "name": "指控中心0",
+      "value": 10,
+      "symbolSize": 60,
+      "category": 3,
+      "ip": "192.168.3.238"
+    },
+    {
+      "id": 10,
+      "name": "指控中心1",
+      "value": 10,
+      "symbolSize": 60,
+      "category": 3,
+      "ip": "192.168.3.238"
+    },
+    {
+      "id": 11,
+      "name": "指控中心2",
+      "value": 8,
+      "symbolSize": 60,
+      "category": 3,
+      "ip": "192.168.3.238"
+    }
+  ],
+  "links": [
+    {
+      "source": 0,
+      "target": 1
+    },
+    {
+      "source": 1,
+      "target": 2
+    },
+    {
+      "source": 0,
+      "target": 2
+    },
+    {
+      "source": 3,
+      "target": 4
+    },
+    {
+      "source": 4,
+      "target": 5
+    },
+    {
+      "source": 3,
+      "target": 5
+    },
+    {
+      "source": 6,
+      "target": 7
+    },
+    {
+      "source": 7,
+      "target": 8
+    },
+    {
+      "source": 6,
+      "target": 8
+    },
+    {
+      "source": 9,
+      "target": 10
+    },
+    {
+      "source": 9,
+      "target": 11
+    },
+    {
+      "source": 10,
+      "target": 11
+    },
+    {
+      "source": 0,
+      "target": 9
+    },
+    {
+      "source": 0,
+      "target": 10
+    },
+    {
+      "source": 0,
+      "target": 11
+    },
+    {
+      "source": 1,
+      "target": 9
+    },
+    {
+      "source": 1,
+      "target": 10
+    },
+    {
+      "source": 1,
+      "target": 11
+    },
+    {
+      "source": 2,
+      "target": 9
+    },
+    {
+      "source": 2,
+      "target": 10
+    },
+    {
+      "source": 2,
+      "target": 11
+    },
+    {
+      "source": 3,
+      "target": 9
+    },
+    {
+      "source": 3,
+      "target": 10
+    },
+    {
+      "source": 3,
+      "target": 11
+    },
+    {
+      "source": 4,
+      "target": 9
+    },
+    {
+      "source": 4,
+      "target": 10
+    },
+    {
+      "source": 4,
+      "target": 11
+    },
+    {
+      "source": 5,
+      "target": 9
+    },
+    {
+      "source": 5,
+      "target": 10
+    },
+    {
+      "source": 5,
+      "target": 11
+    },
+    {
+      "source": 6,
+      "target": 9
+    },
+    {
+      "source": 6,
+      "target": 10
+    },
+    {
+      "source": 6,
+      "target": 11
+    },
+    {
+      "source": 7,
+      "target": 9
+    },
+    {
+      "source": 7,
+      "target": 10
+    },
+    {
+      "source": 7,
+      "target": 11
+    },
+    {
+      "source": 8,
+      "target": 9
+    },
+    {
+      "source": 8,
+      "target": 10
+    },
+    {
+      "source": 8,
+      "target": 11
+    }
+  ]
+}
